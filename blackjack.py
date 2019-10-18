@@ -1,54 +1,76 @@
 import random
 
-print("Welcome to Game of BlackJack")
+print("***************************************Welcome to Game of BlackJack***************************************")
 
 dealershand = []
 yourhand =[]
 
-for x in range(0,2):
+for x in range(0,3):
     dealershand.append(random.randrange(2,12,1))
 
 for x in range(0,2):
     yourhand.append(random.randrange(2,12,1))
 
-print("Here are you cards: ")
-print (yourhand)
-
-print("Here are the dealers card:")
-print (dealershand)
-
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
 
+
+
+if dealercalculate < 21:
+    while True:
+        dealershand.append(random.randrange(2,12,1))
+        dealercalculate = sum(dealershand)
+        if dealercalculate > 21 and 11 in dealershand:
+            for n, i in enumerate(dealershand):
+                if i == 11:
+                    dealershand[n] = 1
+
+            elif dealercalculate > 21:
+                print("Dealer busted")
+                break
+else:
+print("Dealer busted")
+
+print("Here are you cards: ")
+print(yourhand)
+
+print("Here are the dealers card:")
+print(dealershand)
+
+
 i = 1
 while i == 1:
-    if dealercalculate < 20:
+    if dealercalculate < 21 and yourcalculate < 21:
         print("Hit or Stand? Y or N")
         user_choice = input()
     if user_choice == 'y':
         yourhand.append(random.randrange(2, 12, 1))
-        print (yourhand)
-        break
-    elif  user_choice == 'n':
+        print(yourhand)
+        if yourcalculate <= 21:
+            i = 1
+        else:
+            print("You busted your ass son")
+    elif user_choice == 'n':
         break
     else:
         print("please press y or n")
         continue
-"""if dealercalculate > 21 & 11 in dealershand:
-    print("Choose between 11 or 1")
-    user choice = input()
-    if :
-"""
+
+
+
+
+
+
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
 
 if dealercalculate > yourcalculate:
-   print ("You suck ass")
+   print("You suck ass")
 else:
     if dealercalculate < yourcalculate:
-        print ("Noice")
+        print("Noice")
     else:
-        print ("Draw, play again")
+        print("Draw, play again")
 
 #if dealershand
 
