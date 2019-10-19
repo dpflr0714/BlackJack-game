@@ -5,7 +5,7 @@ print("***************************************Welcome to Game of BlackJack******
 dealershand = []
 yourhand =[]
 
-for x in range(0,3):
+for x in range(0,2):
     dealershand.append(random.randrange(2,12,1))
 
 for x in range(0,2):
@@ -14,22 +14,18 @@ for x in range(0,2):
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
 
+if dealercalculate == 21:
+    print("Dealer got blackjack")
 
-
-if dealercalculate < 21:
-    while True:
+while dealercalculate < 18:
         dealershand.append(random.randrange(2,12,1))
-        dealercalculate = sum(dealershand)
-        if dealercalculate > 21 and 11 in dealershand:
-            for n, i in enumerate(dealershand):
-                if i == 11:
-                    dealershand[n] = 1
+        for i, x in enumerate(dealershand):
+            if x == 11:
+                dealershand[i] = 1
+                dealercalculate = sum(dealershand)
 
-            elif dealercalculate > 21:
-                print("Dealer busted")
-                break
-else:
-print("Dealer busted")
+
+
 
 print("Here are you cards: ")
 print(yourhand)
