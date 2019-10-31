@@ -21,34 +21,29 @@ print("Here are the dealers card:")
 print(dealershand)
 
 
-if 18 < dealercalculate < 21:
-    i = 2
-
-elif dealercalculate < 18:
-    dealershand.append(random.randrange(2,12,1))
-    dealercalculate = sum(dealershand)
-    for i, x in enumerate(dealershand):
-        if x == 11:
-            dealershand[i] = 1
-            dealercalculate = sum(dealershand)
-            i = 1
-
+if dealercalculate < 21 and yourcalculate < 21:
+    i = 1
 
 while i == 1:
     print("Hit or Stand? Y or N")
     user_choice = input()
     if user_choice == 'y':
         yourhand.append(random.randrange(2, 12, 1))
+        yourcalculate = sum(yourhand)
         print(yourhand)
     elif user_choice == 'n':
         break
     elif yourcalculate > 21:
         print("You busted your ass")
+        break
     else:
         print("please press y or n")
         continue
 
 
+if yourcalculate < 21:
+    dealershand.append(random.randrange(2, 12, 1))
+    dealercalculate = sum(dealershand)
 
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
@@ -59,6 +54,31 @@ elif dealercalculate == yourcalculate:
     print("Tied")
 else:
     print("Sorry, you lost")
+
+
+def swap(hand):
+    for i, x in enumerate(hand):
+        if x == 11:
+            hand[i] = 1
+
+
+swap(yourhand)
+swap(dealershand)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
