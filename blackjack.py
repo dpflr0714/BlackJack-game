@@ -44,17 +44,28 @@ while i == 1:
 if yourcalculate < 21:
     dealershand.append(random.randrange(2, 12, 1))
     dealercalculate = sum(dealershand)
+    print("Dealer will hit")
+    print(dealershand)
+    if dealercalculate > yourcalculate:
+        print("Congrats, you won!")
+    elif dealercalculate == yourcalculate:
+        print("Tied")
+    else:
+        print("Sorry you lost")
+
 
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
 
+
+"""
 if dealercalculate < yourcalculate:
     print("Congrats, you won!")
 elif dealercalculate == yourcalculate:
     print("Tied")
 else:
     print("Sorry, you lost")
-
+"""
 
 def swap(hand):
     for i, x in enumerate(hand):
@@ -68,8 +79,8 @@ swap(dealershand)
 
 
 
-
-
+print(dealercalculate)
+print(yourcalculate)
 
 
 
