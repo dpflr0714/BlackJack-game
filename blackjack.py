@@ -20,9 +20,17 @@ print(yourhand)
 print("Here are the dealers card:")
 print(dealershand)
 
+if dealercalculate > 21:
+    print("The dealer busted!")
+    i = 0
+if yourcalculate > 21:
+    print("You busted!")
+    i = 0
 
 if dealercalculate < 21 and yourcalculate < 21:
     i = 1
+
+
 
 while i == 1:
     print("Hit or Stand? Y or N")
@@ -31,10 +39,10 @@ while i == 1:
         yourhand.append(random.randrange(2, 12, 1))
         yourcalculate = sum(yourhand)
         print(yourhand)
+        if yourcalculate > 21:
+            print("\n" + "You busted your ass")
+            break
     elif user_choice == 'n':
-        break
-    elif yourcalculate > 21:
-        print("You busted your ass")
         break
     else:
         print("please press y or n")
@@ -42,16 +50,23 @@ while i == 1:
 
 
 if yourcalculate < 21:
-    dealershand.append(random.randrange(2, 12, 1))
-    dealercalculate = sum(dealershand)
-    print("Dealer will hit")
-    print(dealershand)
-    if dealercalculate > yourcalculate:
-        print("Congrats, you won!")
-    elif dealercalculate == yourcalculate:
-        print("Tied")
-    else:
-        print("Sorry you lost")
+    while dealercalculate < 17:
+        dealershand.append(random.randrange(2, 12, 1))
+        dealercalculate = sum(dealershand)
+        print("Dealer will hit")
+        print(dealershand)
+        if dealercalculate > 21:
+            print("Dealer busted after hitting! You won!!!")
+            break
+
+if dealercalculate < yourcalculate <= 21:
+    print("\n" + "You won!")
+
+if yourcalculate < dealercalculate <= 21:
+    print("\n" + "The dealer won!")
+
+if dealercalculate == yourcalculate:
+    print("Tied!")
 
 
 dealercalculate = sum(dealershand)
@@ -76,23 +91,10 @@ def swap(hand):
 swap(yourhand)
 swap(dealershand)
 
-
-
-
-print(dealercalculate)
+print('\n' + "Your total:")
 print(yourcalculate)
-
-
-
-
-
-
-
-
-
-
-
-
+print("Dealer's total:")
+print(dealercalculate)
 
 
 #if dealershand
@@ -112,4 +114,3 @@ if ()
 else:
     return 11
 """
-
