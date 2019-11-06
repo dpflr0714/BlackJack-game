@@ -31,6 +31,13 @@ if dealercalculate < 21 and yourcalculate < 21:
     i = 1
 
 
+def swap(hand):
+    for i, x in enumerate(hand):
+        if x == 11:
+            hand[i] = 1
+
+    return sum(hand)
+
 
 while i == 1:
     print("Hit or Stand? Y or N")
@@ -39,7 +46,10 @@ while i == 1:
         yourhand.append(random.randrange(2, 12, 1))
         yourcalculate = sum(yourhand)
         print(yourhand)
-        if yourcalculate > 21:
+        if yourcalculate > 21 and swap(yourhand) < 21:
+            print("It seems you have 11 in your hand, would you like to switch to 1?")
+            continue
+        if yourcalculate > 21 and swap(yourhand) > 21:
             print("\n" + "You busted your ass")
             break
     elif user_choice == 'n':
@@ -49,13 +59,17 @@ while i == 1:
         continue
 
 
-if yourcalculate < 21:
-    while dealercalculate < 17:
+if yourcalculate <= 21:
+    while dealercalculate < yourcalculate:
         dealershand.append(random.randrange(2, 12, 1))
         dealercalculate = sum(dealershand)
         print("Dealer will hit")
         print(dealershand)
-        if dealercalculate > 21:
+        if dealercalculate > 21 and swap(dealershand) < 21:
+            swap(dealershand)
+            dealercalculate = sum(dealershand)
+            continue
+        if dealercalculate > 21 and swap(dealershand) > 21:
             print("Dealer busted after hitting! You won!!!")
             break
 
@@ -82,21 +96,13 @@ else:
     print("Sorry, you lost")
 """
 
-def swap(hand):
-    for i, x in enumerate(hand):
-        if x == 11:
-            hand[i] = 1
-
-
-swap(yourhand)
-swap(dealershand)
-
 print('\n' + "Your total:")
 print(yourcalculate)
 print("Dealer's total:")
 print(dealercalculate)
 
 
+print(dealershand)
 #if dealershand
 
 """cardlist = ['K','Q','J','A']
