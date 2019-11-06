@@ -58,7 +58,6 @@ while i == 1:
         print("please press y or n")
         continue
 
-
 if yourcalculate <= 21:
     while dealercalculate < yourcalculate:
         dealershand.append(random.randrange(2, 12, 1))
@@ -82,28 +81,29 @@ if yourcalculate < dealercalculate <= 21:
 if dealercalculate == yourcalculate:
     print("Tied!")
 
-
 dealercalculate = sum(dealershand)
 yourcalculate = sum(yourhand)
-
-
-"""
-if dealercalculate < yourcalculate:
-    print("Congrats, you won!")
-elif dealercalculate == yourcalculate:
-    print("Tied")
-else:
-    print("Sorry, you lost")
-"""
 
 print('\n' + "Your total:")
 print(yourcalculate)
 print("Dealer's total:")
 print(dealercalculate)
 
-
-print(dealershand)
 #if dealershand
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 """cardlist = ['K','Q','J','A']
 
